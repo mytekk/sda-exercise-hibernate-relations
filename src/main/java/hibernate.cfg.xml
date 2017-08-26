@@ -2,11 +2,16 @@
 <!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
+		<!-- tak dla przypomnienia -->
+		<!-- dialekt -->
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- sterownik dla połączenia przez JDBC -->
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<!-- string połączeniowy, jesli chcecie korzystać z lokalnej bazy musicie zmienić host, użytkownika i hasło -->
 		<property name="hibernate.connection.url">jdbc:mysql://wercia.pl/sda</property>
 		<property name="hibernate.connection.username">sda</property>
 		<property name="hibernate.connection.password">PmkSeAyDHKx6</property>
+		<!-- encje, które są do zmapowania -->
 		<mapping class="pl.sda.exercise.hibernate.model.Address"/>
 		<mapping class="pl.sda.exercise.hibernate.model.BankAccount"/>
 		<mapping class="pl.sda.exercise.hibernate.model.IdentityCard"/>
