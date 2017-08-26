@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NotFound;
@@ -34,6 +35,10 @@ public class Person {
 	// żeby móc korzystać z tego pola, musimy zmapować także tę encję
 	private Address address;
 
+	@OneToOne(mappedBy = "person")// określamy które pole z encji IdentityCard przechowuje
+	// informację na temat mapowania relacji
+	private IdentityCard identityCard;
+
 	public Address getAddress() {
 		// żeby zmapować relację Many To One potrzebujemy pola adress
 		return address;
@@ -41,7 +46,7 @@ public class Person {
 
 	public IdentityCard getIdentityCard() {
 		// TODO Auto-generated method stub
-		return null;
+		return identityCard;
 	}
 
 	public Set<BankAccount> getBankAccounts() {
