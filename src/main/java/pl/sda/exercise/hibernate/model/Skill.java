@@ -33,4 +33,9 @@ public class Skill {
 		return "Skill [id=" + id + ", name=" + name + ", level=" + level + "]";
 	}
 
+	public Set<Person> getPeople() {
+		// TODO Auto-generated method stub
+		return people;
+	}
+
 }
