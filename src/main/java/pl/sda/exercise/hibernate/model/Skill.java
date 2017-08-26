@@ -25,7 +25,7 @@ public class Skill {
 	@Column(name = "level")
 	private String level;
 
-	@ManyToMany(mappedBy = "skills")
+	@ManyToMany(mappedBy = "skills") //odwracamy relacje manyToMany w encji Person z pola skills
 	private Set<Person> people;
 
 	@Override

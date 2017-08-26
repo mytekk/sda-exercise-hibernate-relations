@@ -30,6 +30,7 @@ public class Person {
 	@Column(name = "last_name")
 	private String lastName;
 
+	//bardziej elegancko byloby zdefiniowac to w encji BankAcount, a tutaj odwrócić
 	@ManyToOne// adnotacja wskazująca rodzaj relacji
 	@JoinColumn(name = "address_id") // wskazujemy, które pole w tabeli person jest kluczem obcym do
 	// tabeli address

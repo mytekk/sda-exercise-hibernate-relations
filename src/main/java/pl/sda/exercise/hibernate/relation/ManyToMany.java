@@ -18,6 +18,8 @@ public class ManyToMany {
 			List<Person> people = session.createQuery("from Person", Person.class).list();
 			System.out.println("People with skills:");
 			people.forEach(person -> System.out.println(person + "; " + person.getSkills()));
+
+
 			List<Skill> skills = session.createQuery("from Skill", Skill.class).list();
 			System.out.println("Skills with people:");
 			skills.forEach(skill -> System.out.println(skill + "; " + skill.getPeople()));
