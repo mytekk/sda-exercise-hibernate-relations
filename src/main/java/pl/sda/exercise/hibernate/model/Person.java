@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -49,6 +51,14 @@ public class Person {
 	// właścicielskiej, a nie zawsze bieżącej
 	private Set<BankAccount> bankAccounts;
 
+	@ManyToMany // nazwa relacji
+	@JoinTable(// musimy określi tabelę połączeniową i klucze obce
+		name = "person_skill",// nazwa tabeli
+		joinColumns = @JoinColumn(name = "person_id"),// klucz obcy wskazujący na bieżącą encję
+		inverseJoinColumns = @JoinColumn(name = "skill_id")// klucz obcy wskazujący na drugą stronę relacji
+	)
+	private Set<Skill> skills;
+
 	public Address getAddress() {
 		// żeby zmapować relację Many To One potrzebujemy pola adress
 		return address;
@@ -66,7 +76,7 @@ public class Person {
 
 	public Set<Skill> getSkills() {
 		// TODO Auto-generated method stub
-		return null;
+		return skills;
 	}
 
 	@Override
