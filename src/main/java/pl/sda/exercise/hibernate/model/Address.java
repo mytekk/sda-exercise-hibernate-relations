@@ -1,10 +1,13 @@
 package pl.sda.exercise.hibernate.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +27,11 @@ public class Address {
 
 	@Column(name = "number")
 	private Integer number;
+
+	@OneToMany(mappedBy = "address")
+	// najprostszy sposób definowania relacji 1:wiele
+	// odwrócenie relacji wiele:1
+	private Set<Person> people;
 
 	@Override
 	public String toString() {

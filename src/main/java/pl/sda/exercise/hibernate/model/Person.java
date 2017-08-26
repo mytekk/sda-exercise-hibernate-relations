@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -39,6 +40,15 @@ public class Person {
 	// informację na temat mapowania relacji
 	private IdentityCard identityCard;
 
+	@OneToMany // nazwa relacji
+	@JoinColumn(name = "person_id") // ważny kod
+	// trzeba pamiętać, że w przypadku relacji OneToMany JoinColumn odraca znaczenie
+	// tzn. określa kolumnę z kluczem obcym, który wskazuje na naszą krotkę (czyli nasze this)
+	// czyli jest to kolumna nie tabeli encji, którą mapujemy ale z przeciwnej strony relacji
+	// w razie wątpliwości, można pamiętać, że w ManyToOne i OneToMany oznacza ona kolumnę z tabeli
+	// właścicielskiej, a nie zawsze bieżącej
+	private Set<BankAccount> bankAccounts;
+
 	public Address getAddress() {
 		// żeby zmapować relację Many To One potrzebujemy pola adress
 		return address;
@@ -51,7 +61,7 @@ public class Person {
 
 	public Set<BankAccount> getBankAccounts() {
 		// TODO Auto-generated method stub
-		return null;
+		return bankAccounts;
 	}
 
 	public Set<Skill> getSkills() {
